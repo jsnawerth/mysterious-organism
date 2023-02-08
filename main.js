@@ -45,6 +45,27 @@ const returnRandBase = () => {
       willLikelySurvive(){
         const cOrG = this.dna.filter(el => el === 'C'|| el === 'G');
         return cOrG.length / this.dna.length >= 0.6;
+      },
+      complementStrand(){
+        let comp = [];
+        for(let i=0;i<this.dna.length;i++){
+            switch (this.dna[i]){
+                case 'A': 
+                    comp.push('T')
+                    break;
+                case 'T': 
+                    comp.push('A')
+                    break;
+                case 'C': 
+                    comp.push('G')
+                    break;
+                case 'G': 
+                    comp.push('C')
+                    break;   
+
+            }
+        }
+        return comp;
       }
     }
   }
@@ -59,7 +80,8 @@ const returnRandBase = () => {
       newArr.push(specimen)
     }
   }
-  console.log(newArr);
+  //console.log(newArr);
   
-  
-  
+  specimenX = (pAequorFactory(999,mockUpStrand()));
+  console.log(specimenX.dna);
+  console.log(specimenX.complementStrand());
